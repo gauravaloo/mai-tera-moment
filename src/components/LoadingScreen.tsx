@@ -8,9 +8,10 @@ export function LoadingScreen() {
 
   useEffect(() => {
     setMounted(true);
-    const t1 = setTimeout(() => setPhase(1), 1800);
-    const t2 = setTimeout(() => setPhase(2), 3600);
-    const t3 = setTimeout(() => setDone(true), 5200);
+    // tripled timings
+    const t1 = setTimeout(() => setPhase(1), 5400);
+    const t2 = setTimeout(() => setPhase(2), 10800);
+    const t3 = setTimeout(() => setDone(true), 15600);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 

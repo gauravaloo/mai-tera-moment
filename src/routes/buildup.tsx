@@ -25,10 +25,11 @@ function Buildup() {
 
   useEffect(() => {
     if (step < seq.length) {
-      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 4200 : 3400);
+      // tripled hold times between every line
+      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 12600 : 10200);
       return () => clearTimeout(t);
     }
-    const t = setTimeout(() => setReveal(true), 1600);
+    const t = setTimeout(() => setReveal(true), 4800);
     return () => clearTimeout(t);
   }, [step]);
 
