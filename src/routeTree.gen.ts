@@ -9,12 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyRouteImport } from './routes/why'
 import { Route as SongRouteImport } from './routes/song'
+import { Route as LittleThingsRouteImport } from './routes/little-things'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WhyRoute = WhyRouteImport.update({
+  id: '/why',
+  path: '/why',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SongRoute = SongRouteImport.update({
   id: '/song',
   path: '/song',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LittleThingsRoute = LittleThingsRouteImport.update({
+  id: '/little-things',
+  path: '/little-things',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +37,59 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
+  '/why': typeof WhyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
+  '/why': typeof WhyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
+  '/why': typeof WhyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/song'
+  fullPaths: '/' | '/little-things' | '/song' | '/why'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/song'
-  id: '__root__' | '/' | '/song'
+  to: '/' | '/little-things' | '/song' | '/why'
+  id: '__root__' | '/' | '/little-things' | '/song' | '/why'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LittleThingsRoute: typeof LittleThingsRoute
   SongRoute: typeof SongRoute
+  WhyRoute: typeof WhyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why': {
+      id: '/why'
+      path: '/why'
+      fullPath: '/why'
+      preLoaderRoute: typeof WhyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/song': {
       id: '/song'
       path: '/song'
       fullPath: '/song'
       preLoaderRoute: typeof SongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/little-things': {
+      id: '/little-things'
+      path: '/little-things'
+      fullPath: '/little-things'
+      preLoaderRoute: typeof LittleThingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LittleThingsRoute: LittleThingsRoute,
   SongRoute: SongRoute,
+  WhyRoute: WhyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
