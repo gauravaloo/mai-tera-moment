@@ -9,8 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SongRouteImport } from './routes/song'
+import { Route as PromiseRouteImport } from './routes/promise'
+import { Route as LetterRouteImport } from './routes/letter'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SongRoute = SongRouteImport.update({
+  id: '/song',
+  path: '/song',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromiseRoute = PromiseRouteImport.update({
+  id: '/promise',
+  path: '/promise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LetterRoute = LetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +37,61 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
+  '/song': typeof SongRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
+  '/song': typeof SongRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
+  '/song': typeof SongRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/letter' | '/promise' | '/song'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/letter' | '/promise' | '/song'
+  id: '__root__' | '/' | '/letter' | '/promise' | '/song'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LetterRoute: typeof LetterRoute
+  PromiseRoute: typeof PromiseRoute
+  SongRoute: typeof SongRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/song': {
+      id: '/song'
+      path: '/song'
+      fullPath: '/song'
+      preLoaderRoute: typeof SongRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promise': {
+      id: '/promise'
+      path: '/promise'
+      fullPath: '/promise'
+      preLoaderRoute: typeof PromiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/letter': {
+      id: '/letter'
+      path: '/letter'
+      fullPath: '/letter'
+      preLoaderRoute: typeof LetterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +104,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LetterRoute: LetterRoute,
+  PromiseRoute: PromiseRoute,
+  SongRoute: SongRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
