@@ -6,14 +6,26 @@ import { Scene, MagneticButton } from "@/components/Scene";
 
 export const Route = createFileRoute("/song")({
   head: () => ({
-    meta: [{ title: "Mai Tera Mai Tera — for Nehuu" }],
+    meta: [{ title: "Mai Tera — for Nehuu ❤️" }],
   }),
   component: SongPage,
 });
 
-const VIDEO_ID = "goeit4-XJ70";
-// Hook "Mai tera, mai tera" begins around the chorus
-const START_SEC = 60;
+const VIDEO_ID = "Grr0FlC8SQA";
+// 3:47 = 227 seconds
+const START_SEC = 227;
+
+const letterLines: string[] = [
+  "Tomorrow is May 13… 'Mai Tera.'",
+  "And sach bolu, that's exactly how I feel about you.",
+  "Har din I'm trying to become better for you, fixing myself little by little, learning how to love you the way you truly deserve, because I genuinely want you in my life for a long time.",
+  "You're honestly my peace — the one person jisse baat karke everything feels lighter without even trying.",
+  "What I want from us is simple… better communication, choti choti conversations, knowing how your day went, what's on your mind, how you're feeling, even the random silly things.",
+  "I never want us to stop sharing parts of our day with each other.",
+  "And maybe when I randomly ask 'kya kar rahi ho?' or 'how was your day?'… it's only because your little updates somehow become the best part of mine.",
+  "May 13… 'Mai Tera.'",
+  "Funny how a date can sound so simple, yet hold something that feels this real.",
+];
 
 function SongPage() {
   const [open, setOpen] = useState(false);
@@ -23,11 +35,11 @@ function SongPage() {
         <>
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(160deg,#1a0a3a,#5a1f5e,#ff7eb6,#ffd6a5)" }}
+            style={{ background: "linear-gradient(160deg,#0a0420,#2a0a3a,#5a1f5e,#ff7eb6)" }}
           />
           <Aurora variant="purple" />
-          <Stars count={100} />
-          <Petals count={22} emoji="🌹" />
+          <Stars count={140} />
+          <Petals count={26} emoji="🌹" />
           <CinematicOverlay />
         </>
       }
@@ -54,28 +66,35 @@ function SongPage() {
       <motion.div
         initial={{ opacity: 0, y: 40, filter: "blur(14px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
-        transition={{ duration: 1.4, delay: 0.6 }}
+        transition={{ duration: 1.4, delay: 0.5 }}
         className="glass glow-soft mt-12 max-w-2xl rounded-3xl p-8 md:p-12 text-left"
       >
-        <p className="font-display text-xl md:text-2xl italic leading-relaxed text-white">
-          Shayad words kabhi enough nahi honge…
-          <br />
-          but if there's one thing I know for sure,
-          <br />
-          it's that every version of my happiness
-          <br />
-          somehow leads to <span className="font-script text-pink-200">tum</span>.
-        </p>
-        <p className="mt-6 font-display text-xl md:text-2xl italic leading-relaxed text-white">
-          Aur shayad isiliye…
-          <br />
-          May 13 sirf ek date nahi lagti.
-        </p>
-        <p className="mt-6 font-display text-xl md:text-2xl italic leading-relaxed text-white">
-          It feels like the universe quietly saying…
-        </p>
-        <p
-          className="mt-6 text-center font-display text-4xl md:text-6xl font-bold glow-text"
+        {letterLines.map((line, i) => {
+          const isHighlight = line.startsWith("May 13") || line.startsWith("Tomorrow");
+          return (
+            <motion.p
+              key={i}
+              initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0)" }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 1, delay: 0.15 * i }}
+              className={
+                isHighlight
+                  ? "mt-5 font-script text-2xl md:text-3xl text-pink-200 glow-text"
+                  : "mt-5 font-display text-lg md:text-xl italic leading-relaxed text-white/95"
+              }
+            >
+              {line}
+            </motion.p>
+          );
+        })}
+
+        <motion.p
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.4 }}
+          className="mt-10 text-center font-display text-4xl md:text-6xl font-bold glow-text"
           style={{
             backgroundImage: "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",
             backgroundSize: "200% 200%",
@@ -86,7 +105,7 @@ function SongPage() {
           }}
         >
           Mai Tera ❤️
-        </p>
+        </motion.p>
       </motion.div>
 
       <motion.div
@@ -95,7 +114,7 @@ function SongPage() {
         transition={{ delay: 1.4, duration: 1 }}
         className="mt-12"
       >
-        <MagneticButton onClick={() => setOpen(true)} label="Play Our Moment 🎶" />
+        <MagneticButton onClick={() => setOpen(true)} label="Play 🎶" />
       </motion.div>
 
       <AnimatePresence>{open && <SongModal onClose={() => setOpen(false)} />}</AnimatePresence>
@@ -104,7 +123,6 @@ function SongPage() {
 }
 
 function SongModal({ onClose }: { onClose: () => void }) {
-  // pulsing hearts that intensify
   const [pulse, setPulse] = useState(false);
   useEffect(() => {
     const t = setTimeout(() => setPulse(true), 600);
@@ -122,8 +140,8 @@ function SongModal({ onClose }: { onClose: () => void }) {
     >
       <div className="absolute inset-0 bg-black/85 backdrop-blur-2xl" onClick={onClose} />
       <Aurora variant="purple" />
-      <Stars count={140} />
-      <Petals count={pulse ? 36 : 18} emoji="❤" />
+      <Stars count={160} />
+      <Petals count={pulse ? 40 : 20} emoji="❤" />
       <CinematicOverlay />
 
       <motion.div
@@ -145,7 +163,23 @@ function SongModal({ onClose }: { onClose: () => void }) {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col items-center gap-3">
+        <motion.p
+          animate={{ scale: [1, 1.04, 1] }}
+          transition={{ duration: 1.4, repeat: Infinity }}
+          className="mt-8 text-center font-display text-4xl md:text-6xl font-bold glow-text"
+          style={{
+            backgroundImage: "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",
+            backgroundSize: "200% 200%",
+            animation: "bgShift 6s ease infinite",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          Mai Tera ❤️
+        </motion.p>
+
+        <div className="mt-6 flex flex-col items-center gap-3">
           {lyrics.map((l, i) => (
             <motion.p
               key={i}
@@ -176,14 +210,13 @@ function SongModal({ onClose }: { onClose: () => void }) {
         </button>
       </motion.div>
 
-      {/* heartbeat glow */}
       <motion.div
         className="pointer-events-none absolute inset-0"
         animate={{ opacity: [0.2, 0.6, 0.2] }}
         transition={{ duration: 1.4, repeat: Infinity }}
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(255,150,200,0.25), transparent 60%)",
+            "radial-gradient(ellipse at center, rgba(255,150,200,0.28), transparent 60%)",
         }}
       />
     </motion.div>
