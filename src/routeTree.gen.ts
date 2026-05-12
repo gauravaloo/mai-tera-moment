@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyRouteImport } from './routes/why'
 import { Route as SongRouteImport } from './routes/song'
 import { Route as LittleThingsRouteImport } from './routes/little-things'
+import { Route as BuildupRouteImport } from './routes/buildup'
 import { Route as IndexRouteImport } from './routes/index'
 
 const WhyRoute = WhyRouteImport.update({
@@ -29,6 +30,11 @@ const LittleThingsRoute = LittleThingsRouteImport.update({
   path: '/little-things',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildupRoute = BuildupRouteImport.update({
+  id: '/buildup',
+  path: '/buildup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buildup': typeof BuildupRoute
   '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
   '/why': typeof WhyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buildup': typeof BuildupRoute
   '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
   '/why': typeof WhyRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buildup': typeof BuildupRoute
   '/little-things': typeof LittleThingsRoute
   '/song': typeof SongRoute
   '/why': typeof WhyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/little-things' | '/song' | '/why'
+  fullPaths: '/' | '/buildup' | '/little-things' | '/song' | '/why'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/little-things' | '/song' | '/why'
-  id: '__root__' | '/' | '/little-things' | '/song' | '/why'
+  to: '/' | '/buildup' | '/little-things' | '/song' | '/why'
+  id: '__root__' | '/' | '/buildup' | '/little-things' | '/song' | '/why'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuildupRoute: typeof BuildupRoute
   LittleThingsRoute: typeof LittleThingsRoute
   SongRoute: typeof SongRoute
   WhyRoute: typeof WhyRoute
@@ -92,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LittleThingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buildup': {
+      id: '/buildup'
+      path: '/buildup'
+      fullPath: '/buildup'
+      preLoaderRoute: typeof BuildupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuildupRoute: BuildupRoute,
   LittleThingsRoute: LittleThingsRoute,
   SongRoute: SongRoute,
   WhyRoute: WhyRoute,
