@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { CursorGlow } from "@/components/CursorGlow";
+import { LoadingScreen } from "@/components/LoadingScreen";
 
 function NotFoundComponent() {
   return (
@@ -117,6 +118,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <LoadingScreen />
       <CursorGlow />
       <Outlet />
     </QueryClientProvider>
