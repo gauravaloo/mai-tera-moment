@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PromiseRouteImport } from './routes/promise'
 import { Route as LetterRouteImport } from './routes/letter'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PromiseRoute = PromiseRouteImport.update({
+  id: '/promise',
+  path: '/promise',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LetterRoute = LetterRouteImport.update({
   id: '/letter',
   path: '/letter',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/letter': typeof LetterRoute
+  '/promise': typeof PromiseRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/letter'
+  fullPaths: '/' | '/letter' | '/promise'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/letter'
-  id: '__root__' | '/' | '/letter'
+  to: '/' | '/letter' | '/promise'
+  id: '__root__' | '/' | '/letter' | '/promise'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LetterRoute: typeof LetterRoute
+  PromiseRoute: typeof PromiseRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/promise': {
+      id: '/promise'
+      path: '/promise'
+      fullPath: '/promise'
+      preLoaderRoute: typeof PromiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/letter': {
       id: '/letter'
       path: '/letter'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LetterRoute: LetterRoute,
+  PromiseRoute: PromiseRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
