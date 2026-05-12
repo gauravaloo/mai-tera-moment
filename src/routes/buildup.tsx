@@ -25,10 +25,10 @@ function Buildup() {
 
   useEffect(() => {
     if (step < seq.length) {
-      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 2200 : 1500);
+      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 4200 : 3400);
       return () => clearTimeout(t);
     }
-    const t = setTimeout(() => setReveal(true), 800);
+    const t = setTimeout(() => setReveal(true), 1600);
     return () => clearTimeout(t);
   }, [step]);
 
@@ -57,7 +57,7 @@ function Buildup() {
               initial={{ opacity: 0, y: 30, filter: "blur(14px)", scale: 0.95 }}
               animate={{ opacity: 1, y: 0, filter: "blur(0)", scale: 1 }}
               exit={{ opacity: 0, y: -30, filter: "blur(14px)", scale: 1.05 }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
               className="font-display text-3xl md:text-5xl italic text-white/90 glow-text"
             >
               {seq[step]}
