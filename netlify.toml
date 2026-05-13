@@ -1,3 +1,3 @@
 [build]
-  command = "bun run build"
-  environment = { NETLIFY = "true" }
+  command = "npm install --include=dev && npm run build"
+  environment = { NETLIFY = "true", NODE_VERSION = "20" }
