@@ -2,23 +2,29 @@ import { useEffect, useState } from "react";
 
 export function CursorGlow() {
   const [pos, setPos] = useState({ x: -200, y: -200 });
-  const [hearts, setHearts] = useState<{ id: number; x: number; y: number }[]>([]);
 
   useEffect(() => {
-    let id = 0;
-    let last = 0;
+    if (typeof window === "undefined") return;
+    // disable on touch / small screens — saves a ton of repaints on mobile
+    if (window.matchMedia("(hover: none)").matches) return;
+    let raf = 0;
+    let nx = -200;
+    let ny = -200;
     const onMove = (e: MouseEvent) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      const now = performance.now();
-      if (now - last > 90) {
-        last = now;
-        const newId = id++;
-        setHearts((h) => [...h, { id: newId, x: e.clientX, y: e.clientY }].slice(-12));
-        setTimeout(() => setHearts((h) => h.filter((p) => p.id !== newId)), 1200);
+      nx = e.clientX;
+      ny = e.clientY;
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          setPos({ x: nx, y: ny });
+        });
       }
     };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
@@ -43,26 +49,6 @@ export function CursorGlow() {
           transition: "left .25s ease-out, top .25s ease-out",
         }}
       />
-      {hearts.map((h) => (
-        <span
-          key={h.id}
-          className="pointer-events-none fixed z-[101] -translate-x-1/2 -translate-y-1/2 text-pink-300"
-          style={{
-            left: h.x,
-            top: h.y,
-            animation: "heartTrail 1.2s ease-out forwards",
-            fontSize: 14,
-          }}
-        >
-          ♥
-        </span>
-      ))}
-      <style>{`
-        @keyframes heartTrail {
-          0% { opacity: 1; transform: translate(-50%,-50%) scale(0.6); }
-          100% { opacity: 0; transform: translate(-50%,-150%) scale(1.4); }
-        }
-      `}</style>
     </>
   );
 }
