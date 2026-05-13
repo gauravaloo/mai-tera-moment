@@ -1,9 +1,3 @@
 [build]
   command = "bun run build"
-  publish = "dist"
   environment = { NETLIFY = "true" }
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
