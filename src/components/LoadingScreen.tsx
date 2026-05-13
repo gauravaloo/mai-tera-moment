@@ -204,7 +204,7 @@ export function LoadingScreen() {
                   className="font-display text-lg md:text-2xl italic tracking-wide text-white/90"
                   style={{ textShadow: "0 0 22px rgba(255,180,210,0.55)" }}
                 >
-                  Building something special for Nehuu…
+                  Something special, sirf Nehuu ke liye…
                 </motion.p>
               )}
               {phase === 1 && (
