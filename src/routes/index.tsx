@@ -91,7 +91,7 @@ function Reveal() {
           transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
           className="mt-10 flex flex-col items-center"
         >
-          <h1 className="font-display text-7xl md:text-[10rem] font-bold leading-none glow-text"
+          <h1 className="font-display text-6xl sm:text-7xl md:text-[10rem] font-bold leading-none glow-text"
             style={{
               backgroundImage:
                 "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",
@@ -132,7 +132,7 @@ function Morph({ from, to, active }: { from: string; to: string; active: boolean
           animate={{ opacity: 1, y: 0, filter: "blur(0px)", scale: 1 }}
           exit={{ opacity: 0, y: -20, filter: "blur(14px)", scale: 1.1 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-block font-display text-5xl md:text-8xl font-semibold glow-text"
+              className="inline-block font-display text-4xl sm:text-5xl md:text-8xl font-semibold glow-text"
           style={{ color: active ? "#ffd1e8" : "white" }}
         >
           {active ? to : from}
