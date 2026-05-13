@@ -44,12 +44,12 @@ function Why() {
         initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="mt-4 font-display text-5xl md:text-7xl font-bold glow-text"
+        className="mt-4 font-display text-4xl sm:text-5xl md:text-7xl font-bold glow-text"
       >
         Why <em className="italic">you</em>?
       </motion.h2>
 
-      <div className="mt-14 grid w-full gap-5 md:grid-cols-2">
+      <div className="mt-12 grid w-full gap-4 sm:gap-5 md:grid-cols-2">
         {lines.map((l, i) => (
           <motion.div
             key={i}
@@ -58,7 +58,7 @@ function Why() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.9, delay: 0.15 * i }}
             whileHover={{ scale: 1.03, rotate: -0.5 }}
-            className="glass glow-soft rounded-3xl p-7 text-left"
+            className="glass glow-soft rounded-3xl p-5 sm:p-7 text-left"
           >
             <WordReveal text={l} />
           </motion.div>
@@ -71,7 +71,7 @@ function Why() {
 function WordReveal({ text }: { text: string }) {
   const words = text.split(" ");
   return (
-    <p className="font-display text-xl md:text-2xl italic leading-relaxed text-white">
+    <p className="font-display text-lg sm:text-xl md:text-2xl italic leading-relaxed text-white">
       {words.map((w, i) => (
         <motion.span
           key={i}
