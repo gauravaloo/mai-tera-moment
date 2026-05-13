@@ -26,10 +26,10 @@ function Buildup() {
   useEffect(() => {
     if (step < seq.length) {
       // tripled hold times between every line
-      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 12600 : 10200);
+      const t = setTimeout(() => setStep((s) => s + 1), step < 2 ? 5500 : 4500);
       return () => clearTimeout(t);
     }
-    const t = setTimeout(() => setReveal(true), 4800);
+    const t = setTimeout(() => setReveal(true), 2200);
     return () => clearTimeout(t);
   }, [step]);
 
@@ -59,7 +59,7 @@ function Buildup() {
               animate={{ opacity: 1, y: 0, filter: "blur(0)", scale: 1 }}
               exit={{ opacity: 0, y: -30, filter: "blur(14px)", scale: 1.05 }}
               transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl md:text-5xl italic text-white/90 glow-text"
+              className="font-display text-2xl sm:text-3xl md:text-5xl italic text-white/90 glow-text px-4"
             >
               {seq[step]}
             </motion.p>
@@ -74,7 +74,7 @@ function Buildup() {
               className="flex flex-col items-center"
             >
               <h1
-                className="font-display text-7xl md:text-[10rem] font-bold leading-none glow-text"
+                className="font-display text-6xl sm:text-7xl md:text-[10rem] font-bold leading-none glow-text"
                 style={{
                   backgroundImage:
                     "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",

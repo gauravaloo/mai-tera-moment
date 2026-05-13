@@ -38,7 +38,7 @@ function SongPage() {
             style={{ background: "linear-gradient(160deg,#0a0420,#2a0a3a,#5a1f5e,#ff7eb6)" }}
           />
           <Aurora variant="purple" />
-          <Stars count={140} />
+          <Stars count={70} />
           <Petals count={26} emoji="🌹" />
           <CinematicOverlay />
         </>
@@ -58,7 +58,7 @@ function SongPage() {
         initial={{ opacity: 0, y: 30, filter: "blur(12px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
         transition={{ duration: 1.2, delay: 0.3 }}
-        className="mt-4 font-display text-5xl md:text-7xl font-bold glow-text"
+        className="mt-4 font-display text-4xl sm:text-5xl md:text-7xl font-bold glow-text"
       >
         A little love letter.
       </motion.h2>
@@ -67,7 +67,7 @@ function SongPage() {
         initial={{ opacity: 0, y: 40, filter: "blur(14px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
         transition={{ duration: 1.4, delay: 0.5 }}
-        className="glass glow-soft mt-12 max-w-2xl rounded-3xl p-8 md:p-12 text-left"
+        className="glass glow-soft mt-10 w-full max-w-2xl rounded-3xl p-5 sm:p-8 md:p-12 text-left"
       >
         {letterLines.map((line, i) => {
           const isHighlight = line.startsWith("May 13") || line.startsWith("Tomorrow");
@@ -80,8 +80,8 @@ function SongPage() {
               transition={{ duration: 1, delay: 0.15 * i }}
               className={
                 isHighlight
-                  ? "mt-5 font-script text-2xl md:text-3xl text-pink-200 glow-text"
-                  : "mt-5 font-display text-lg md:text-xl italic leading-relaxed text-white/95"
+                  ? "mt-5 font-script text-xl sm:text-2xl md:text-3xl text-pink-200 glow-text"
+                  : "mt-5 font-display text-base sm:text-lg md:text-xl italic leading-relaxed text-white/95"
               }
             >
               {line}
@@ -94,7 +94,7 @@ function SongPage() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="mt-10 text-center font-display text-4xl md:text-6xl font-bold glow-text"
+          className="mt-10 text-center font-display text-3xl sm:text-4xl md:text-6xl font-bold glow-text"
           style={{
             backgroundImage: "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",
             backgroundSize: "200% 200%",
@@ -140,7 +140,7 @@ function SongModal({ onClose }: { onClose: () => void }) {
     >
       <div className="absolute inset-0 bg-black/85 backdrop-blur-2xl" onClick={onClose} />
       <Aurora variant="purple" />
-      <Stars count={160} />
+      <Stars count={80} />
       <Petals count={pulse ? 40 : 20} emoji="❤" />
       <CinematicOverlay />
 
@@ -166,7 +166,7 @@ function SongModal({ onClose }: { onClose: () => void }) {
         <motion.p
           animate={{ scale: [1, 1.04, 1] }}
           transition={{ duration: 1.4, repeat: Infinity }}
-          className="mt-8 text-center font-display text-4xl md:text-6xl font-bold glow-text"
+          className="mt-8 text-center font-display text-3xl sm:text-4xl md:text-6xl font-bold glow-text"
           style={{
             backgroundImage: "linear-gradient(120deg,#ffd1e8,#ffb6c1,#e9b8ff,#ffd6a5)",
             backgroundSize: "200% 200%",
@@ -195,7 +195,7 @@ function SongModal({ onClose }: { onClose: () => void }) {
                 repeat: Infinity,
                 repeatDelay: 4,
               }}
-              className="font-script text-3xl md:text-5xl text-pink-100 glow-text"
+              className="font-script text-2xl sm:text-3xl md:text-5xl text-pink-100 glow-text text-center px-4"
             >
               {l}
             </motion.p>
