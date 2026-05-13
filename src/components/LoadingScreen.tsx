@@ -9,16 +9,16 @@ export function LoadingScreen() {
   useEffect(() => {
     setMounted(true);
     // tripled timings
-    const t1 = setTimeout(() => setPhase(1), 5400);
-    const t2 = setTimeout(() => setPhase(2), 10800);
-    const t3 = setTimeout(() => setDone(true), 15600);
+    const t1 = setTimeout(() => setPhase(1), 3000);
+    const t2 = setTimeout(() => setPhase(2), 6000);
+    const t3 = setTimeout(() => setDone(true), 8800);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, []);
 
   // generate randomized stars only on the client to avoid SSR hydration mismatch
   const stars = useMemo(
     () =>
-      Array.from({ length: 70 }).map(() => ({
+      Array.from({ length: 35 }).map(() => ({
         top: Math.random() * 100,
         left: Math.random() * 100,
         dur: 3 + Math.random() * 3,
@@ -31,7 +31,7 @@ export function LoadingScreen() {
   // orbiting petals around the heart
   const orbits = useMemo(
     () =>
-      Array.from({ length: 24 }).map((_, i) => ({
+      Array.from({ length: 12 }).map((_, i) => ({
         angle: (i / 24) * Math.PI * 2,
         radius: 90 + Math.random() * 30,
         size: 2 + Math.random() * 3,
@@ -85,7 +85,7 @@ export function LoadingScreen() {
           )}
 
           {/* the heart composition */}
-          <div className="relative flex items-center justify-center" style={{ width: 280, height: 280 }}>
+          <div className="relative flex items-center justify-center max-w-[90vw]" style={{ width: 260, height: 260 }}>
             {/* soft outer halo */}
             <motion.div
               className="absolute rounded-full"
@@ -192,7 +192,7 @@ export function LoadingScreen() {
           </div>
 
           {/* text */}
-          <div className="mt-12 h-16 text-center">
+          <div className="mt-10 h-16 px-6 text-center">
             <AnimatePresence mode="wait">
               {phase === 0 && (
                 <motion.p
@@ -201,7 +201,7 @@ export function LoadingScreen() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
                   exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
                   transition={{ duration: 1 }}
-                  className="font-display text-xl md:text-2xl italic tracking-wide text-white/90"
+                  className="font-display text-lg md:text-2xl italic tracking-wide text-white/90"
                   style={{ textShadow: "0 0 22px rgba(255,180,210,0.55)" }}
                 >
                   Building something special for Nehuu…
@@ -214,7 +214,7 @@ export function LoadingScreen() {
                   animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
                   exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
                   transition={{ duration: 1 }}
-                  className="font-display text-xl md:text-2xl italic tracking-wide text-white/90"
+                  className="font-display text-lg md:text-2xl italic tracking-wide text-white/90"
                   style={{ textShadow: "0 0 22px rgba(255,180,210,0.55)" }}
                 >
                   Some feelings deserve more than words.
