@@ -5,7 +5,7 @@ import { Scene } from "@/components/Scene";
 
 export const Route = createFileRoute("/why")({
   head: () => ({
-    meta: [{ title: "Why You — Nehuu" }],
+    meta: [{ title: "Why You · Nehuu" }],
   }),
   component: Why,
 });

@@ -7,7 +7,7 @@ import { MagneticButton } from "@/components/Scene";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Mai Tera — for Nehuu ♡" },
+      { title: "Mai Tera · for Nehuu ♡" },
       { name: "description", content: "A love story written in light, sirf Nehuu ke liye." },
     ],
   }),

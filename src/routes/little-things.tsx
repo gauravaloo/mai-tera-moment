@@ -5,7 +5,7 @@ import { Aurora, Petals, CinematicOverlay } from "@/components/Atmosphere";
 import { Scene } from "@/components/Scene";
 
 export const Route = createFileRoute("/little-things")({
-  head: () => ({ meta: [{ title: "Little Things — Nehuu" }] }),
+  head: () => ({ meta: [{ title: "Little Things · Nehuu" }] }),
   component: LittleThings,
 });
 
@@ -43,7 +43,7 @@ function LittleThings() {
         <span className="font-script text-pink-100">badi feelings.</span>
       </motion.h2>
       <p className="mt-4 max-w-xl font-display text-base sm:text-lg italic text-white/80 px-2">
-        Nehuu, yeh chhoti chhoti baatein hain — par mere liye sab kuch hain.
+        Nehuu, yeh chhoti chhoti baatein hain · par mere liye sab kuch hain.
       </p>
 
       <div className="mt-12 grid w-full gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
