@@ -1,3 +1,4 @@
 [build]
   command = "npm install --include=dev && npm run build"
+  publish = "dist/client"
   environment = { NETLIFY = "true", NODE_VERSION = "20" }
