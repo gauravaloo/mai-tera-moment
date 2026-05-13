@@ -43,7 +43,7 @@ function Intro() {
             "radial-gradient(ellipse at 50% 60%, #1a0822 0%, #06030d 60%, #000 100%)",
         }}
       />
-      <Stars count={140} />
+      <Stars count={60} />
       <CinematicOverlay />
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
