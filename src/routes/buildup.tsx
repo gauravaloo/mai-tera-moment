@@ -5,7 +5,7 @@ import { Aurora, Stars, Petals, CinematicOverlay } from "@/components/Atmosphere
 import { Scene } from "@/components/Scene";
 
 export const Route = createFileRoute("/buildup")({
-  head: () => ({ meta: [{ title: "Mai Tera — the realization" }] }),
+  head: () => ({ meta: [{ title: "Mai Tera · the realization" }] }),
   component: Buildup,
 });
 

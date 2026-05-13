@@ -157,7 +157,7 @@ export function LoadingScreen() {
                 />
               ))}
 
-            {/* the heart itself — gradient SVG with breathing pulse */}
+            {/* the heart itself · gradient SVG with breathing pulse */}
             <motion.div
               animate={{ scale: [1, 1.12, 0.97, 1.08, 1] }}
               transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}

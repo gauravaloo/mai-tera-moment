@@ -6,7 +6,7 @@ import { Scene, MagneticButton } from "@/components/Scene";
 
 export const Route = createFileRoute("/song")({
   head: () => ({
-    meta: [{ title: "Mai Tera — for Nehuu ❤️" }],
+    meta: [{ title: "Mai Tera · for Nehuu ❤️" }],
   }),
   component: SongPage,
 });
@@ -19,7 +19,7 @@ const letterLines: string[] = [
   "Tomorrow is May 13… 'Mai Tera.'",
   "And sach bolu, that's exactly how I feel about you.",
   "Har din I'm trying to become better for you, fixing myself little by little, learning how to love you the way you truly deserve, because I genuinely want you in my life for a long time.",
-  "You're honestly my peace — the one person jisse baat karke everything feels lighter without even trying.",
+  "You're honestly my peace · the one person jisse baat karke everything feels lighter without even trying.",
   "What I want from us is simple… better communication, choti choti conversations, knowing how your day went, what's on your mind, how you're feeling, even the random silly things.",
   "I never want us to stop sharing parts of our day with each other.",
   "And maybe when I randomly ask 'kya kar rahi ho?' or 'how was your day?'… it's only because your little updates somehow become the best part of mine.",
