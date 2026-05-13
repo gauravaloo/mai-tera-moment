@@ -16,7 +16,7 @@ const VIDEO_ID = "Grr0FlC8SQA";
 const START_SEC = 227;
 
 const letterLines: string[] = [
-  "Tomorrow is May 13… 'Mai Tera.'",
+  "Today is May 13… 'Mai Tera.'",
   "And sach bolu, that's exactly how I feel about you.",
   "Har din I'm trying to become better for you, fixing myself little by little, learning how to love you the way you truly deserve, because I genuinely want you in my life for a long time.",
   "You're honestly my peace · the one person jisse baat karke everything feels lighter without even trying.",
