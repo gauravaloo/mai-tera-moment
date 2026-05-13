@@ -38,7 +38,7 @@ function SongPage() {
             style={{ background: "linear-gradient(160deg,#0a0420,#2a0a3a,#5a1f5e,#ff7eb6)" }}
           />
           <Aurora variant="purple" />
-          <Stars count={140} />
+          <Stars count={70} />
           <Petals count={26} emoji="🌹" />
           <CinematicOverlay />
         </>
@@ -140,7 +140,7 @@ function SongModal({ onClose }: { onClose: () => void }) {
     >
       <div className="absolute inset-0 bg-black/85 backdrop-blur-2xl" onClick={onClose} />
       <Aurora variant="purple" />
-      <Stars count={160} />
+      <Stars count={80} />
       <Petals count={pulse ? 40 : 20} emoji="❤" />
       <CinematicOverlay />
 
