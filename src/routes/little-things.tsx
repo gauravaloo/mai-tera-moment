@@ -36,21 +36,21 @@ function LittleThings() {
         initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0)" }}
         transition={{ duration: 1.2 }}
-        className="font-display text-5xl md:text-7xl font-bold glow-text"
+        className="font-display text-4xl sm:text-5xl md:text-7xl font-bold glow-text"
       >
         Little things,
         <br />
         <span className="font-script text-pink-100">badi feelings.</span>
       </motion.h2>
-      <p className="mt-4 max-w-xl font-display text-lg italic text-white/80">
+      <p className="mt-4 max-w-xl font-display text-base sm:text-lg italic text-white/80 px-2">
         Nehuu, yeh chhoti chhoti baatein hain — par mere liye sab kuch hain.
       </p>
 
-      <div className="mt-14 grid w-full gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-12 grid w-full gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {cards.map((c, i) => (
           <TiltCard key={i} delay={i * 0.08}>
             <div className="text-3xl">{c.e}</div>
-            <p className="mt-3 font-display text-lg italic leading-snug text-white">
+            <p className="mt-3 font-display text-base sm:text-lg italic leading-snug text-white">
               {c.t}
             </p>
           </TiltCard>
