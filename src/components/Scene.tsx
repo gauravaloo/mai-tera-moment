@@ -20,19 +20,19 @@ export function Scene({ children, bg, next, prev, textColor = "text-white" }: Pr
       className={`relative min-h-screen w-full overflow-hidden ${textColor}`}
     >
       {bg}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-24 text-center">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-4 py-16 sm:px-6 sm:py-24 text-center">
         {children}
         {(prev || next) && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.8 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-4"
+            className="mt-12 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
           >
             {prev && (
               <Link
                 to={prev.to}
-                className="magnetic-btn rounded-full glass px-6 py-3 text-sm tracking-wide opacity-80 hover:opacity-100"
+                className="magnetic-btn rounded-full glass px-5 py-2.5 sm:px-6 sm:py-3 text-sm tracking-wide opacity-80 hover:opacity-100"
               >
                 ← {prev.label}
               </Link>
@@ -50,7 +50,7 @@ export function MagneticButton({ to, label, onClick }: { to?: string; label: str
     <motion.span
       whileHover={{ scale: 1.06 }}
       whileTap={{ scale: 0.97 }}
-      className="magnetic-btn relative inline-flex items-center gap-2 rounded-full px-9 py-4 text-base font-medium tracking-wider text-white glow-soft"
+      className="magnetic-btn relative inline-flex items-center gap-2 rounded-full px-7 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-medium tracking-wider text-white glow-soft"
       style={{
         background:
           "linear-gradient(120deg, rgba(255,150,200,0.85), rgba(180,140,255,0.85), rgba(255,180,150,0.85))",
